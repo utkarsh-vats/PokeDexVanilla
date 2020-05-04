@@ -58,3 +58,64 @@ h1 {
 .pokemon .number {
 	background-color: #fff;
 }
+
+header{
+	display: flex;
+	width: 100%;
+	justify-content: space-between;
+	align-items: center;
+	padding: 30px 10%;
+}
+
+.icon {
+	display: flex;
+	justify-content: left;
+	align-items: center;
+}
+
+select {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	outline: none;
+	border: none;
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 500;
+	font-size: 16px;
+}
+
+.select {
+	margin: 1rem;
+	position: relative;
+	overflow: hidden;
+}
+
+select {
+	color: #ff6f47;
+	width: 20rem;
+	cursor: pointer;
+	padding: 1rem;
+	/* border-bottom-right-radius: 25px; */
+	/* border-top-right-radius: 25px; */
+	transition: all 0.3s ease;
+}
+
+.select::after {
+	content: "\25BC";
+	position: absolute;
+	background: #ff6f47;
+	top: 0;
+	right: 0;
+	padding: 1rem;
+	pointer-events: none;
+	transition: all 0.3s ease;
+}
+
+.select:hover::after {
+	background: white;
+	color: #ff6f47;
+}
+
+select:hover {
+	transform: scaleX(1.2);
+}

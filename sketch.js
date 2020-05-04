@@ -4,7 +4,8 @@
 
 
 const poke_container = document.getElementById('poke_container');
-const pokemons_number = 802;
+const generationFilter = document.querySelector('.generation-select');
+const pokemons_number = 807;
 
 const colors = {
 	fire: '#fddfdf',
@@ -23,13 +24,40 @@ const colors = {
 	normal: '#f5f5f5'
 }
 
+const initialIdx = {
+	1: 1,
+	2: 152,
+	3: 252,
+	4: 387,
+	5: 494,
+	6: 650,
+	7: 722
+}
+
+const lastIdx = {
+	1: 151,
+	2: 251,
+	3: 386,
+	4: 494,
+	5: 649,
+	6: 721,
+	7: 807
+}
+
 const main_types= Object.keys(colors);
 
-const fetchPokemons = async () => {
-	for(let i = 1; i <= pokemons_number; i++){
-		await getPokemon(i);
+var isCreated = new Array(807);
+
+generationFilter.addEventListener('click', filterPokemon);
+
+const fetchPokemons = async (m, n) => {
+	for(let i = m; i <= n; i++){
+		if(!isCreated[i])
+			await getPokemon(i);
 	}
 }
+
+fetchPokemons(800, 807);
 
 const getPokemon = async id => {
 	const url = `https://pokeapi.co/api/v2/pokemon/${id}`;
@@ -51,6 +79,18 @@ function createPokemonCard(pokemon) {
 	pokemonEl.style.backgroundColor = color;
 	
 	const pokeInnerHTML = `
+		<style>
+			.pokemon {
+				-moz-osx-font-smoothing: grayscale;
+  				backface-visibility: hidden;
+				transform: translateZ(0);
+  				transition: transform 0.25s ease-out;
+			}
+			.pokemon:focus{
+				cursor: pointer;
+				transform: scale(1.05);
+			}
+		</style>
 		<div class="img-container">
 			<img src="https://pokeres.bastionbot.org/images/pokemon/${pokemon.id}.png"/>
 		</div>
@@ -66,5 +106,13 @@ function createPokemonCard(pokemon) {
 	poke_container.appendChild(pokemonEl);
 }
 
+for(var i = 800; i<= 807; i++)
+	isCreated[i] = false;
+fetchPokemons(800, 807);
 
-fetchPokemons();
+function filterPokemon(event) {
+	// for(var i = initialIdx[event.target.value]; i <= lastIdx[event.target.value]; i++){
+	// 	isCreated[i] = false;
+	// }
+	// fetchPokemons(initialIdx[event.target.value], lastIdx[event.target.value]);
+}

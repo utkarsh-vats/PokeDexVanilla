@@ -1,12 +1,43 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<meta name="viewport" content="width=device-width initial-scale=1">
 	<title>Pokedex</title>
+	<style>
+		@import url('https://fonts.googleapis.com/css?family=Merriweather|Open+Sans|Open+Sans+Condensed:300|Playfair+Display|Raleway&display=swap');
+	</style>
+	<link rel="stylesheet" href="https://unpkg.com/tachyons@4.12.0/css/tachyons.min.css"/>
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.css">
 	<link rel="stylesheet" type="text/css" href="style.css">
 	
 </head>
 <body>
-	<h1>Pokedex</h1>
+	<header>
+		<div class="icon">
+			<img src="https://img.icons8.com/color/100/000000/mystic-pokemon.png"/>
+			<h1>Pokedex</h1>
+		</div>
+		<!-- <nav>
+			<ul>
+				<li>
+					<a href="#">Services</a>
+				</li>
+			</ul>
+		</nav> -->
+		<a class="cta" href="#">
+			<select name="generation-select" class="generation-select">
+				<!-- <option value="all">All</option> -->
+				<option value="1" selected>Generation 1</option>
+				<option value="2">Generation 2</option>
+				<option value="3">Generation 3</option>
+				<option value="4">Generation 4</option>
+				<option value="5">Generation 5</option>
+				<option value="6">Generation 6</option>
+				<option value="7">Generation 7</option>
+				<option value="8">Generation 8</option>
+			</select>
+		</a>
+	</header>
 	<div id="poke_container" class="poke-container">
 		<div></div>
 	</div>
